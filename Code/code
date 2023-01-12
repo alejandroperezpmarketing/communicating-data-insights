@@ -7,8 +7,4 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-
-
-
-
-
+oil_data = pd.read_csv("C:/Users/PerezPeA/OneDrive - Unisys/Documents/Training/communicating-data-insights/Data/Vegetable Oil Monthly Price/MPOB_data1.csv")
