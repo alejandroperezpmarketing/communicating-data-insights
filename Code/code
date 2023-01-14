@@ -1,13 +1,15 @@
 ###################################################
-#Visualizing Stadistical Data
+# Visualizing Stadistical Data
 
+import warnings
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-oil_data = pd.read_csv('/workspaces/communicating-data-insights/02/demos/datasets/MPOB_data1.csv')
+oil_data = pd.read_csv(
+    '/workspaces/communicating-data-insights/02/demos/datasets/MPOB_data1.csv')
 
 oil_data.head()
 
@@ -16,31 +18,28 @@ oil_data.describe()
 oil_data.mean().sort_values(ascending=False)[1:]
 
 
-
-
-
 fig, ax = plt.subplots(figsize=(12, 8))
 
 plt.xticks(rotation=70)
 
-plt.bar('FishOil', 
-        oil_data['FishOil '], 
+plt.bar('FishOil',
+        oil_data['FishOil '],
         width=0.5)
 
-plt.bar('GroundnutOil', 
-        oil_data['GroundnutOil '], 
+plt.bar('GroundnutOil',
+        oil_data['GroundnutOil '],
         width=0.5)
 
-plt.bar('CoconutOil', 
-        oil_data['CoconutOil '], 
+plt.bar('CoconutOil',
+        oil_data['CoconutOil '],
         width=0.5)
 
-plt.bar('RapeseedOil', 
-        oil_data['RapeseedOil '], 
+plt.bar('RapeseedOil',
+        oil_data['RapeseedOil '],
         width=0.5)
 
-plt.bar('SunflowerOil', 
-        oil_data['SunflowerOil '], 
+plt.bar('SunflowerOil',
+        oil_data['SunflowerOil '],
         width=0.5)
 
 plt.title('Oil Prices - 2006 to 2018')
@@ -48,3 +47,55 @@ plt.title('Oil Prices - 2006 to 2018')
 plt.xlabel('Oils')
 plt.ylabel('Prices')
 plt.show()
+
+
+max_val = oil_data['GroundnutOil '].max()
+max_val
+
+oil_data[:][oil_data['GroundnutOil '] == max_val]
+
+min_val = oil_data['GroundnutOil '].min()
+min_val
+
+mean_val = oil_data['GroundnutOil '].mean()
+mean_val
+
+median_val = oil_data['GroundnutOil '].median()
+median_val
+
+fig, ax = plt.subplots(figsize=(12, 8))
+plt.xticks(rotation=90)
+
+plt.scatter(
+    oil_data['Year'],
+    oil_data['GroundnutOil '],
+    color='blue'
+
+)
+
+plt.axhline(max_val, label='Max', color='red')
+plt.axhline(min_val, label='Min', color='red')
+
+plt.axhline(mean_val, label='Mean', color='green')
+plt.axhline(median_val, label='Median', color='limegreen')
+
+plt.legend(loc='upper right', bbox_to_anchor=(1.2, 1))
+plt.title('GroundnutOil Oil Prices - 2006 - 2018')
+plt.xlabel('Year')
+plt.ylabel('Prices')
+plt.show()
+
+
+##############################################################
+
+
+warnings.filterwarnings('ignore')
+oil_data.drop.na(axis=0, inplace=True)
+oil_data.head(5)
+
+selected_oil_data = oil_data[['GroundnutOil ', 'FishOil ']]
+selected_oil_data.boxplot()
+
+
+oil_data.boxplot(column=['Lard '], by=['Year'], figsize=(12, 8))
+
