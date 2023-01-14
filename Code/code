@@ -7,4 +7,39 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import stats
 
-oil_data = pd.read_csv("C:/Users/PerezPeA/OneDrive - Unisys/Documents/Training/communicating-data-insights/Data/Vegetable Oil Monthly Price/MPOB_data1.csv")
+oil_data = pd.read_csv('/workspaces/communicating-data-insights/02/demos/datasets/MPOB_data1.csv')
+
+oil_data.head()
+
+oil_data.describe()
+
+oil_data.mean().sort_values(ascending=False)[1:]
+
+fig, ax = plt.subplot(figsize=(12,8))
+
+plt.xticks(rotation=70)
+
+plt.bar('FishOil', 
+        oil_data['FishOil '], 
+        width=0.5)
+
+plt.bar('GroundnutOil', 
+        oil_data['GroundnutOil '], 
+        width=0.5)
+
+plt.bar('CoconutOil', 
+        oil_data['CoconutOil '], 
+        width=0.5)
+
+plt.bar('RapeseedOil', 
+        oil_data['RapeseedOil '], 
+        width=0.5)
+
+plt.bar('SunflowerOil',
+        oil_data['SunflowerOil '],
+        width=0.5)
+
+plt.title('Oil Prices - 2006 to 2018')
+plt.xlabel('Oil')
+plt.ylabel('Prices')
+plt.show()
