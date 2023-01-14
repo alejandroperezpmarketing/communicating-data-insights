@@ -15,7 +15,11 @@ oil_data.describe()
 
 oil_data.mean().sort_values(ascending=False)[1:]
 
-fig, ax = plt.subplot(figsize=(12,8))
+
+
+
+
+fig, ax = plt.subplots(figsize=(12, 8))
 
 plt.xticks(rotation=70)
 
@@ -35,11 +39,12 @@ plt.bar('RapeseedOil',
         oil_data['RapeseedOil '], 
         width=0.5)
 
-plt.bar('SunflowerOil',
-        oil_data['SunflowerOil '],
+plt.bar('SunflowerOil', 
+        oil_data['SunflowerOil '], 
         width=0.5)
 
 plt.title('Oil Prices - 2006 to 2018')
-plt.xlabel('Oil')
+
+plt.xlabel('Oils')
 plt.ylabel('Prices')
 plt.show()
